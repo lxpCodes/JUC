@@ -1,5 +1,7 @@
 package com.mashibing.juc.c_000;
 
+import java.util.concurrent.TimeUnit;
+
 public class T03_Sleep_Yield_Join {
     public static void main(String[] args) {
 //        testSleep();
@@ -25,7 +27,9 @@ public class T03_Sleep_Yield_Join {
         new Thread(()->{
             for(int i=0; i<100; i++) {
                 System.out.println("A" + i);
-                if(i%10 == 0) Thread.yield();
+                if(i%10 == 0) {
+                    Thread.yield();
+                }
 
 
             }
@@ -34,7 +38,9 @@ public class T03_Sleep_Yield_Join {
         new Thread(()->{
             for(int i=0; i<100; i++) {
                 System.out.println("------------B" + i);
-                if(i%10 == 0) Thread.yield();
+                if(i%10 == 0) {
+                    Thread.yield();
+                }
             }
         }).start();
     }
@@ -45,7 +51,7 @@ public class T03_Sleep_Yield_Join {
                 System.out.println("A" + i);
                 try {
                     Thread.sleep(500);
-                    //TimeUnit.Milliseconds.sleep(500)
+//                    TimeUnit.Milliseconds.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

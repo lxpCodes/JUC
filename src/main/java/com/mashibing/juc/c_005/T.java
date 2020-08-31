@@ -7,9 +7,10 @@ package com.mashibing.juc.c_005;
 
 public class T implements Runnable {
 
-	private /*volatile*/ int count = 100;
+	private volatile int count = 100;
 	
-	public /*synchronized*/ void run() { 
+	@Override
+	public /*synchronized*/ void run() {
 		count--;
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}
